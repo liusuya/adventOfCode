@@ -1,4 +1,4 @@
-f = open("test.txt", "r")
+f = open("input.txt", "r")
 
 lines = f.readlines()
 currentGroupList = set()
@@ -11,7 +11,15 @@ for line in lines:
 
     else:
         newLineGroup = set(line)
-        currentGroupList = currentGroupList.union(newLineGroup)
+        if len(currentGroupList) == 0:
+            currentGroupList = newLineGroup
+        else:
+            #part 1 - union
+            #currentGroupList = currentGroupList.union(newLineGroup)
+            #part 2 - interesction
+            currentGroupList = currentGroupList.intersection(newLineGroup)
+
+        #print(currentGroupList)
 
 currentTotal = currentTotal + len(currentGroupList) - 1
 print("currentTotal: " + str(currentTotal))
